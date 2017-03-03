@@ -1,10 +1,8 @@
-package jas.cse.milkwala.views.activity.login;
+package jas.cse.milkwala.views.activity.register;
 
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -14,46 +12,47 @@ import jas.cse.milkwala.R;
 import jas.cse.milkwala.modle.properties.LoginResultPrp;
 import jas.cse.milkwala.views.activity.BaseActivity;
 
-public class LoginActivity extends BaseActivity implements LoginView {
+public class RegisterActivity extends BaseActivity implements RegisterView {
+
     @BindView(R.id.edittextemail)
     EditText editTextemail;
 
     @BindView(R.id.edittextpassword)
     EditText editTextpassword;
 
-    ILoginPresenter loginPresenter;   //object of LoginPresenter, but by the name ILoginPresenter, because it implements ILoginPresenter.
+    @BindView(R.id.edittextusername)
+    EditText editTextusername;
+
+    @BindView(R.id.edittextphone)
+    EditText editTextphone;
+
+    IRegisterPresenter registerPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        loginPresenter=new LoginPresenter(this,this);
+        setContentView(R.layout.activity_register);
+        registerPresenter=new RegisterPresenter(this,this);
         ButterKnife.bind(this);
 
     }
 
-    @OnClick(R.id.buttonSignin)
-    public void onLoginButtonClick()
+    @OnClick(R.id.buttonRegister)
+    public void onRegisterButtonClick()
     {
-        loginPresenter.requestLogin(editTextemail.getText().toString(),editTextpassword.getText().toString());
-    }
+        registerPresenter.requestRegister(editTextusername.getText().toString(),editTextemail.getText().toString(),editTextpassword.getText().toString(),editTextphone.getText().toString());
 
-/*
-    @OnClick(R.id.textViewForgotPassword)
-    public void onForgotPasswordClick()
-    {
-        loginPresenter.requestForgotPassword(editTextEmail.getText().toString());
     }
-*/
-
     @Override
-    public void onLoginComplete(LoginResultPrp loginResult) {
+    public void onRegisterComplete(LoginResultPrp loginResult) {
         Toast.makeText(this,loginResult.getResult().getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void startProgress() {
         startProgressDialog(getString(R.string.loadingPleasewait));
+
     }
 
     @Override
@@ -65,9 +64,4 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void showFeedbackMessage(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
-
-   /* @Override
-    public void onForgetPasswordComplete() {
-
-    }*/
 }

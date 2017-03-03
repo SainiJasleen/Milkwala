@@ -20,4 +20,9 @@ public interface WebInterface {
     @POST("milkwala/ws/forgetPassword.php")
     Call<ResponseBody> requestForgetPassword(@Field("email")String email);
 
+    @FormUrlEncoded
+    @POST("milkwala/ws/register.php")
+    Call<LoginResultPrp> requestRegister(@Field("email")String email, @Field("password") String password, @Field("userName")String userName,@Field("phone")String phone);
+
+
 }

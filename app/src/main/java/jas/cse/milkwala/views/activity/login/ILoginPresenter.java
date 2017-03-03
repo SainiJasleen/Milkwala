@@ -7,6 +7,4 @@ package jas.cse.milkwala.views.activity.login;
 public interface ILoginPresenter {
     public void requestLogin(String email,String password);
     public void requestForgotPassword(String email);
-
-
 }
