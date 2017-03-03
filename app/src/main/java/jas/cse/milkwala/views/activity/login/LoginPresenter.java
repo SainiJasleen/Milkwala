@@ -83,7 +83,18 @@ public class LoginPresenter implements ILoginPresenter, BaseUrl {
 
     private boolean isEmailValid(String email)
     {
-        return  true;
+        String emailPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if(email.matches(emailPattern))
+        {
+            loginView.showFeedbackMessage("Validate email address");
+            return true;
+        }
+        else
+        {
+            loginView.showFeedbackMessage("Not a valid email address");
+            return false;
+        }
+
     }
 
 
