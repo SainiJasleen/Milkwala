@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Milkwala</string>
+    <string name="Clickhere"><u>Click Here</u></string>
+    <string name="forgetpassword">Forget Password?</string>
+    <string name="SignInnow">Signin Now</string>
+    <string name="donthaveanaccount">Don,t have an account? Please Signup</string>
+    <string name="internetconnectionmessage">Check your Internet connection...</string>
+    <string name="feedback">Network Problem</string>
+    <string name="ok">ok</string>
+    <string name="loadingPleasewait">Loading... Please wait.</string>
+    <string name="emailempty">Please enter email.</string>
+    <string name="passwordEmpty">Please enter password.</string>
+    <string name="wrongusernamepassword">Wrong email/password.</string>
+    <string name="pleaseentervalidemail">Please enter valid email.</string>
+    <string name="Registernow">Register Now</string>
+    <string name="alreadyregistered">Email already registered...</string>
+    <string name="usernameempty">Please enter Username.</string>
+    <string name="phoneempty">Please enter phone number.</string>
+</resources>

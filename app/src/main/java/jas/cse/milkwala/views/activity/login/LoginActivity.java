@@ -1,10 +1,12 @@
 package jas.cse.milkwala.views.activity.login;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -13,6 +15,7 @@ import butterknife.OnClick;
 import jas.cse.milkwala.R;
 import jas.cse.milkwala.modle.properties.LoginResultPrp;
 import jas.cse.milkwala.views.activity.BaseActivity;
+import jas.cse.milkwala.views.activity.register.RegisterActivity;
 
 public class LoginActivity extends BaseActivity implements LoginView {
     @BindView(R.id.edittextemail)
@@ -20,6 +23,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @BindView(R.id.edittextpassword)
     EditText editTextpassword;
+
+    @BindView(R.id.textviewregister)
+    TextView textViewRegister;
 
     ILoginPresenter loginPresenter;   //object of LoginPresenter, but by the name ILoginPresenter, because it implements ILoginPresenter.
 
@@ -30,6 +36,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
         loginPresenter=new LoginPresenter(this,this);
         ButterKnife.bind(this);
 
+    }
+
+    @OnClick(R.id.textviewregister)
+    public void onClickRegisterTextview()
+    {
+        Intent intent=new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.buttonSignin)
