@@ -1,4 +1,4 @@
-package jas.cse.milkwala.modle.properties;
+package jas.cse.milkwala.modle.properties.login;
 
 /**
  * Created by User on 02-03-2017.

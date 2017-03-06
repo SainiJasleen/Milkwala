@@ -63,7 +63,7 @@
             android:layout_below="@id/edittextpassword"
             android:gravity="center"
             android:background="@drawable/design"
-            android:hint="Phone"
+            android:hint="Mobile Numbrer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edittextphone"
@@ -83,7 +83,20 @@
             android:textAllCaps="false"
             android:textStyle="bold"
             android:id="@+id/buttonRegister"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonRegister"
+            android:text="@string/haveanaccount"
+            android:id="@+id/textviewregister"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:padding="2dp"/>
+
 
     </RelativeLayout>
+
 
 </RelativeLayout>

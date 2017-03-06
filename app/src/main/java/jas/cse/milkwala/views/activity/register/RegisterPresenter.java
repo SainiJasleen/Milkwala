@@ -5,7 +5,9 @@ import android.app.Activity;
 import jas.cse.milkwala.R;
 import jas.cse.milkwala.modle.networkconnection.BaseUrl;
 import jas.cse.milkwala.modle.networkconnection.WebInterface;
-import jas.cse.milkwala.modle.properties.LoginResultPrp;
+import jas.cse.milkwala.modle.properties.register.RegisterBody;
+import jas.cse.milkwala.modle.properties.register.RegisterResponse;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,72 +15,92 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by User on 03-03-2017.
+ * Created by User on 06-03-2017.
  */
 
 public class RegisterPresenter implements IRegisterPresenter,BaseUrl {
 
     RegisterView view;
     Activity activity;
+
     RegisterPresenter(RegisterView view,Activity activity)
     {
         this.activity=activity;
         this.view=view;
     }
-
     @Override
-    public void requestRegister(String email, String password, String userName, String phone) {
-
-        if(checkFieldEmpty(email,password,userName,phone))
+    public void requestRegister(RegisterBody registerBody) {
+        if(!isFieldEmpty(registerBody.getEmail()))
         {
-            if(isEmailValid(email))
+            view.showFeedbackMessage(activity.getString(R.string.emailempty));
+
+        }
+        else if (!isFieldEmpty(registerBody.getUserName()))
+        {
+            view.showFeedbackMessage(activity.getString(R.string.usernameempty));
+        }
+        else if (!isFieldEmpty(registerBody.getPassword()))
+        {
+            view.showFeedbackMessage(activity.getString(R.string.passwordEmpty));
+        }
+        else if (!isFieldEmpty(registerBody.getMobileNumber()))
+        {
+            view.showFeedbackMessage(activity.getString(R.string.phoneempty));
+        }
+        else
+        {
+            makeRegisterRequest(registerBody);
+            if(isEmailValid(registerBody.getEmail()))
             {
-                makeLoginRequest(email,password,userName,phone);
+                view.showFeedbackMessage("Valid Email Address");
             }
         }
 
-
     }
-    private boolean checkFieldEmpty(String email,String password,String userName,String phone)
+    private boolean isFieldEmpty(String value)
     {
-        if(email.trim().length()==0)
+        if(value.trim().length()==0)
         {
-            view.showFeedbackMessage(activity.getString(R.string.emailempty));
             return false;
         }
-        else if(password.trim().length()==0)
-        {
-            view.showFeedbackMessage(activity.getString(R.string.passwordEmpty));
-
-            return  false;
-        }
-        else if(userName.trim().length()==0)
-        {
-            view.showFeedbackMessage(activity.getString(R.string.usernameempty));
-
-            return  false;
-        }
-
-        else if(phone.trim().length()==0)
-        {
-            view.showFeedbackMessage(activity.getString(R.string.phoneempty));
-
-            return  false;
-        }
-
-        else
-        {
-            return  true;
-        }
+        return  true;
     }
 
+    private void makeRegisterRequest(RegisterBody registerBody) {
+        view.startProgress();
+
+        Retrofit retrofit=new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        final Call<RegisterResponse> result=retrofit.create(WebInterface.class).requestRegister(registerBody.getEmail(),registerBody.getPassword(),registerBody.getUserName(),registerBody.getMobileNumber(),registerBody.getDeviceToken());
+        result.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                view.stopProgress();
+                if (response.body().getResult().getStatus()>0)
+                {
+                    view.onRegistrationComplete(response.body());
+                }
+                else if (response.body().getResult().getStatus()==-2)
+                {
+                    view.showFeedbackMessage(activity.getString(R.string.alreadyregistered));
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                view.stopProgress();
+                view.showFeedbackMessage(activity.getString(R.string.wrongusernamepassword));
+
+            }
+        });
+    }
 
     private boolean isEmailValid(String email)
     {
         String emailPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(email.matches(emailPattern))
         {
-            view.showFeedbackMessage("Validate email address");
             return true;
         }
         else
@@ -89,25 +111,5 @@ public class RegisterPresenter implements IRegisterPresenter,BaseUrl {
 
     }
 
-
-    private void makeLoginRequest(String email,String password,String userName,String phone)
-    {
-        view.startProgress();
-        Retrofit retrofit=new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        final Call<LoginResultPrp> result=retrofit.create(WebInterface.class).requestRegister(userName,email,password,phone);
-        result.enqueue(new Callback<LoginResultPrp>() {
-            @Override
-            public void onResponse(Call<LoginResultPrp> call, Response<LoginResultPrp> response) {
-                view.stopProgress();
-                view.onRegisterComplete(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<LoginResultPrp> call, Throwable t) {
-                view.stopProgress();
-                view.showFeedbackMessage(activity.getString(R.string.alreadyregistered));
-            }
-        });
-    }
 
 }

@@ -1,11 +1,8 @@
 package jas.cse.milkwala.views.activity.login;
 
 import android.content.Intent;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jas.cse.milkwala.R;
-import jas.cse.milkwala.modle.properties.LoginResultPrp;
+import jas.cse.milkwala.modle.properties.login.LoginResultPrp;
 import jas.cse.milkwala.views.activity.BaseActivity;
 import jas.cse.milkwala.views.activity.register.RegisterActivity;
 

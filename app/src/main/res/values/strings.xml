@@ -12,8 +12,10 @@
     <string name="passwordEmpty">Please enter password.</string>
     <string name="wrongusernamepassword">Wrong email/password.</string>
     <string name="pleaseentervalidemail">Please enter valid email.</string>
-    <string name="Registernow">Register Now</string>
-    <string name="alreadyregistered">Email already registered...</string>
+    <string name="Registernow">SignUp Now</string>
+    <string name="alreadyregistered">Email already Existed...</string>
     <string name="usernameempty">Please enter Username.</string>
-    <string name="phoneempty">Please enter phone number.</string>
+    <string name="phoneempty">Please enter mobile number.</string>
+    <string name="haveanaccount">Already have an account? SignIn here.</string>
+    <string name="RegistarationSucessful">Registered Sucessfully.</string>
 </resources>

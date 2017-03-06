@@ -1,6 +1,8 @@
 package jas.cse.milkwala.modle.networkconnection;
 
-import jas.cse.milkwala.modle.properties.LoginResultPrp;
+import jas.cse.milkwala.modle.properties.login.LoginResultPrp;
+import jas.cse.milkwala.modle.properties.register.RegisterBody;
+import jas.cse.milkwala.modle.properties.register.RegisterResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -22,7 +24,7 @@ public interface WebInterface {
 
     @FormUrlEncoded
     @POST("milkwala/ws/register.php")
-    Call<LoginResultPrp> requestRegister(@Field("email")String email, @Field("password") String password, @Field("userName")String userName,@Field("phone")String phone);
+    Call<RegisterResponse> requestRegister(@Field("email")String email, @Field("password") String password, @Field("userName")String userName, @Field("phone")String phone, @Field("deviceToken") String deviceToken);
 
 
 }

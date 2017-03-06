@@ -5,8 +5,7 @@ import android.app.Activity;
 import jas.cse.milkwala.R;
 import jas.cse.milkwala.modle.networkconnection.BaseUrl;
 import jas.cse.milkwala.modle.networkconnection.WebInterface;
-import jas.cse.milkwala.modle.properties.LoginResultPrp;
-import okhttp3.ResponseBody;
+import jas.cse.milkwala.modle.properties.login.LoginResultPrp;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -86,7 +85,6 @@ public class LoginPresenter implements ILoginPresenter, BaseUrl {
         String emailPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(email.matches(emailPattern))
         {
-            loginView.showFeedbackMessage("Validate email address");
             return true;
         }
         else

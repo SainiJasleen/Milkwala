@@ -1,6 +1,6 @@
 package jas.cse.milkwala.views.activity.login;
 
-import jas.cse.milkwala.modle.properties.LoginResultPrp;
+import jas.cse.milkwala.modle.properties.login.LoginResultPrp;
 
 /**
  * Created by User on 02-03-2017.

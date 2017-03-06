@@ -1,6 +1,6 @@
 package jas.cse.milkwala.views.activity.register;
 
-import jas.cse.milkwala.modle.properties.LoginResultPrp;
+import jas.cse.milkwala.modle.properties.register.RegisterResponse;
 
 /**
  * Created by User on 03-03-2017.
@@ -8,7 +8,8 @@ import jas.cse.milkwala.modle.properties.LoginResultPrp;
 
 public interface RegisterView {
 
-    void onRegisterComplete(LoginResultPrp loginResult);
+    void onRegistrationComplete(RegisterResponse response);
+
 
     void startProgress();
     void stopProgress();
