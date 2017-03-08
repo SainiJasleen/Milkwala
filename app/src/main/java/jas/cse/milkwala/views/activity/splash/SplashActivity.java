@@ -8,10 +8,12 @@ import android.os.Bundle;
 import jas.cse.milkwala.R;
 import jas.cse.milkwala.utils.customcontrols.dialogs.ApplicationDialog;
 import jas.cse.milkwala.utils.customcontrols.dialogs.ConnectionUtils;
+import jas.cse.milkwala.utils.customcontrols.dialogs.MW_SharedPref;
+import jas.cse.milkwala.views.activity.HomeActivity;
 import jas.cse.milkwala.views.activity.login.LoginActivity;
 
-public class SplashScreen extends AppCompatActivity {
-    int Splash_Time=3000;
+public class SplashActivity extends AppCompatActivity {
+    int SPLASH_TIME=3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +48,23 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplashScreen.this,LoginActivity.class);
-                startActivity(intent);
-            }
-        },Splash_Time);
-    }
 
-}
+                MW_SharedPref sharedPref=new MW_SharedPref();
+
+        if(sharedPref.getInt(SplashActivity.this,sharedPref.USER_ID)>0)
+        {
+            Intent intent=new Intent(SplashActivity.this,HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+    }
+},SPLASH_TIME);
+        }
+
+        }

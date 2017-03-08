@@ -30,16 +30,16 @@ public class RegisterPresenter implements IRegisterPresenter,BaseUrl {
     }
     @Override
     public void requestRegister(RegisterBody registerBody) {
-        if(!isFieldEmpty(registerBody.getEmail()))
+        if (!isFieldEmpty(registerBody.getUserName()))
+        {
+            view.showFeedbackMessage(activity.getString(R.string.usernameempty));
+        }
+        else if(!isFieldEmpty(registerBody.getEmail()))
         {
             view.showFeedbackMessage(activity.getString(R.string.emailempty));
 
         }
-        else if (!isFieldEmpty(registerBody.getUserName()))
-        {
-            view.showFeedbackMessage(activity.getString(R.string.usernameempty));
-        }
-        else if (!isFieldEmpty(registerBody.getPassword()))
+       else if (!isFieldEmpty(registerBody.getPassword()))
         {
             view.showFeedbackMessage(activity.getString(R.string.passwordEmpty));
         }
@@ -49,11 +49,9 @@ public class RegisterPresenter implements IRegisterPresenter,BaseUrl {
         }
         else
         {
-            makeRegisterRequest(registerBody);
             if(isEmailValid(registerBody.getEmail()))
-            {
-                view.showFeedbackMessage("Valid Email Address");
-            }
+            makeRegisterRequest(registerBody);
+
         }
 
     }
@@ -63,7 +61,9 @@ public class RegisterPresenter implements IRegisterPresenter,BaseUrl {
         {
             return false;
         }
+
         return  true;
+       
     }
 
     private void makeRegisterRequest(RegisterBody registerBody) {

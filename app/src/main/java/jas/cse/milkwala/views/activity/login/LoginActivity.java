@@ -11,7 +11,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jas.cse.milkwala.R;
 import jas.cse.milkwala.modle.properties.login.LoginResultPrp;
+import jas.cse.milkwala.utils.customcontrols.dialogs.MW_SharedPref;
 import jas.cse.milkwala.views.activity.BaseActivity;
+import jas.cse.milkwala.views.activity.HomeActivity;
 import jas.cse.milkwala.views.activity.register.RegisterActivity;
 
 public class LoginActivity extends BaseActivity implements LoginView {
@@ -56,9 +58,22 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 */
 
+
     @Override
     public void onLoginComplete(LoginResultPrp loginResult) {
-        Toast.makeText(this,loginResult.getResult().getMessage(), Toast.LENGTH_SHORT).show();
+        if(loginResult.getResult().getStatus()==1)
+        {
+
+            MW_SharedPref sharedPref=new MW_SharedPref();
+            sharedPref.setInt(this,sharedPref.USER_ID,loginResult.getResult().getId());
+
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
+        else
+        {
+            Toast.makeText(this,getString(R.string.wrongusernamepassword),Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

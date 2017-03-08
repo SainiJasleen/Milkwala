@@ -26,6 +26,7 @@
         <EditText
             android:padding="10dp"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:gravity="center"
             android:layout_width="match_parent"
             android:background="@drawable/design"
@@ -38,6 +39,7 @@
             android:layout_marginTop="2dp"
             android:layout_below="@id/edittextemail"
             android:gravity="center"
+            android:inputType="textPassword"
             android:background="@drawable/design"
             android:hint="Password"
             android:layout_width="match_parent"
