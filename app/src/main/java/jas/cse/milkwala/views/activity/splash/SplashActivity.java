@@ -11,6 +11,7 @@ import jas.cse.milkwala.utils.customcontrols.dialogs.ConnectionUtils;
 import jas.cse.milkwala.utils.customcontrols.dialogs.MW_SharedPref;
 import jas.cse.milkwala.views.activity.HomeActivity;
 import jas.cse.milkwala.views.activity.login.LoginActivity;
+import jas.cse.milkwala.views.activity.profile.ProfileActivity;
 
 public class SplashActivity extends AppCompatActivity {
     int SPLASH_TIME=3000;
@@ -53,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
 
         if(sharedPref.getInt(SplashActivity.this,sharedPref.USER_ID)>0)
         {
-            Intent intent=new Intent(SplashActivity.this,HomeActivity.class);
+            Intent intent=new Intent(SplashActivity.this,ProfileActivity.class);
             startActivity(intent);
             finish();
         }

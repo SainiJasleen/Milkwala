@@ -10,10 +10,11 @@
 
     <style name="NoActionAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#be5525</item>
-        <item name="colorPrimaryDark">#914623</item>
+        <item name="colorPrimary">@color/colorPrimaryActionBar</item>
+        <item name="colorPrimaryDark">@color/colorActionBar</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>
+
 

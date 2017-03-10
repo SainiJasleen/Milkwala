@@ -14,6 +14,7 @@ import jas.cse.milkwala.modle.properties.login.LoginResultPrp;
 import jas.cse.milkwala.utils.customcontrols.dialogs.MW_SharedPref;
 import jas.cse.milkwala.views.activity.BaseActivity;
 import jas.cse.milkwala.views.activity.HomeActivity;
+import jas.cse.milkwala.views.activity.profile.ProfileActivity;
 import jas.cse.milkwala.views.activity.register.RegisterActivity;
 
 public class LoginActivity extends BaseActivity implements LoginView {
@@ -67,7 +68,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
             MW_SharedPref sharedPref=new MW_SharedPref();
             sharedPref.setInt(this,sharedPref.USER_ID,loginResult.getResult().getId());
 
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, ProfileActivity.class));
             finish();
         }
         else

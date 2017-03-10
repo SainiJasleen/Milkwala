@@ -18,4 +18,24 @@
     <string name="phoneempty">Please enter mobile number.</string>
     <string name="haveanaccount">Already have an account? SignIn here.</string>
     <string name="RegistarationSucessful">Registered Sucessfully.</string>
+    <string name="updateInfo">Update Info</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="pincode">Pin Code</string>
+    <string name="SelectCountry"><b>INDIA</b></string>
+
+    <string-array name="cities">
+        <item> Chandigarh </item>
+        <item> Mohali </item>
+        <item> Panchkula</item>
+        <item> Ambala</item>
+        <item> Ropar</item>
+    </string-array>
+
+    <string-array name="states">
+        <item>Punjab</item>
+        <item>Haryana</item>
+    </string-array>
+
 </resources>

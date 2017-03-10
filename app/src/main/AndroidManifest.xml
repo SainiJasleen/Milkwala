@@ -11,16 +11,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/NoActionAppTheme">
-        <activity android:name=".views.activity.splash.SplashActivity">
+        <activity
+            android:name=".views.activity.splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.activity.login.LoginActivity" />
-        <activity android:name=".views.activity.register.RegisterActivity" />
-        <activity android:name=".views.activity.HomeActivity"></activity>
+        <activity
+            android:name=".views.activity.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.activity.register.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".views.activity.profile.ProfileActivity"></activity>
     </application>
 
 </manifest>
